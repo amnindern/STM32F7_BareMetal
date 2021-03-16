@@ -36,15 +36,21 @@ int main(void)
 
 
 
-void delayms(int n){
+void delayms(int n)
+{
 	
-	volatile int i=0;
-	while( n > 0)
-	{
-		n--;
-		for (i = 0; i < 3195; i++);
-	}
+	int i=0;
+	SysTick->LOAD = 16000;
+	SysTick->VAL  = 0;
+	SysTick->CTRL = 0x5;
+	
+	
+	for (i = 0; i < n; i++)
+		{
+			while( (SysTick->CTRL & 0x10000) == 0)
+			{}
+		}
+	SysTick->CTRL = 0;
 }
-
 
 
