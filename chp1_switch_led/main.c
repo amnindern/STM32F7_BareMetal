@@ -40,17 +40,17 @@ void delayms(int n)
 {
 	
 	int i=0;
-	SysTick->LOAD = 16000;
-	SysTick->VAL  = 0;
-	SysTick->CTRL = 0x5;
+	SysTick->LOAD = 16000;			//Number of clock per millisecond with 16MHz sys clock
+	SysTick->VAL  = 0;			//clear current value register 
+	SysTick->CTRL = 0x5;			//enable timer
 	
 	
 	for (i = 0; i < n; i++)
 		{
-			while( (SysTick->CTRL & 0x10000) == 0)
+			while( (SysTick->CTRL & 0x10000) == 0)			//wait until COUNTFLAG is set
 			{}
 		}
-	SysTick->CTRL = 0;
+	SysTick->CTRL = 0;			//stop the timer
 }
 
 
