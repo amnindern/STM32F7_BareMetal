@@ -22,34 +22,31 @@ Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
 D:\GitHub\STM32F7_BareMetal\GPIO_Interupts\interupt_chp1.uvprojx
-Project File Date:  03/23/2021
+Project File Date:  03/26/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.15', folder: 'D:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-main.c(10): warning: no previous extern declaration for non-static variable 'agggg' [-Wmissing-variable-declarations]
-unsigned int agggg = 0 ;
-             ^
-main.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-unsigned int agggg = 0 ;
-^
 main.c(18): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
         LedPort->MODER &= ~0x0000000C;                  // CLEAR PI1 USER LED PIN
                        ~~ ^~~~~~~~~~~
 main.c(20): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
         LedPort->MODER &= ~0x00C00000;                  // SETING PI11 TO INPUT USER BUTTON PIN
                        ~~ ^~~~~~~~~~~
-main.c(38): warning: no previous prototype for function 'EXTI15_10_IRQHandler' [-Wmissing-prototypes]
-void EXTI15_10_IRQHandler(void)
+main.c(38): warning: no previous prototype for function 'EXTI15_10_IRQ_Handler' [-Wmissing-prototypes]
+void EXTI15_10_IRQ_Handler(void)
      ^
 main.c(38): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void EXTI15_10_IRQHandler(void)
+void EXTI15_10_IRQ_Handler(void)
 ^
 static 
+main.c(60): warning: comparison of integers of different signs: 'uint32_t' (aka 'unsigned int') and 'int' [-Wsign-compare]
+        for (i = 0; i < n; i++)
+                    ~ ^ ~
 4 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=616 RO-data=472 RW-data=0 ZI-data=1632  
+Program Size: Code=568 RO-data=472 RW-data=0 ZI-data=1632  
 ".\Objects\interupt_chp1.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -76,12 +73,12 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.4.0
 
    * Component: Keil::Device:Startup:1.2.5
+      Source file:   MDK\Device\Source\ARM\STM32F74x_75x_OTP.s
       Source file:   MDK\Device\Source\ARM\STM32F74x_75x_OPT.s
       Include file:  Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h
       Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\arm\startup_stm32f746xx.s
-      Source file:   MDK\Device\Source\ARM\STM32F74x_75x_OTP.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\system_stm32f7xx.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

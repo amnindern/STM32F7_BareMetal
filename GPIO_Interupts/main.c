@@ -7,7 +7,7 @@
 #include <stdint.h>
 
 #define LedPort GPIOI
-unsigned int agggg = 0 ;
+
 void delayms(int n);
 
 int main(void)
@@ -18,7 +18,7 @@ int main(void)
 	LedPort->MODER &= ~0x0000000C;			// CLEAR PI1 USER LED PIN
 	LedPort->MODER |=  0x00000004;			// SETTING PI1 TO OUTPUT USER LED PIN
 	LedPort->MODER &= ~0x00C00000;			// SETING PI11 TO INPUT USER BUTTON PIN
-	RCC->APB2ENR	 |=  0x00004000;			// ENABLE SYSCFG
+	RCC->APB2ENR   |=  0x00004000;			// ENABLE SYSCFG
 	
 	SYSCFG->EXTICR[2] |= 0X00008000;			//SELECT PORTI FOR EXTI11
 	EXTI->IMR		|= 0X00000800;			//MASK INTERUPT FOR EXTI11
@@ -35,7 +35,7 @@ int main(void)
 *
 *
 */
-void EXTI15_10_IRQHandler(void)
+void EXTI15_10_IRQ_Handler(void)
 {
 	LedPort->ODR ^= 0x00000002;
 	delayms(1);	
@@ -51,7 +51,7 @@ void EXTI15_10_IRQHandler(void)
 void delayms(int n)
 {
 	
-	int i=0;
+	uint32_t i=0;
 	SysTick->LOAD = 16000;			//Number of clock per millisecond with 16MHz sys clock
 	SysTick->VAL  = 0;			//clear current value register 
 	SysTick->CTRL = 0x5;			//enable timer
